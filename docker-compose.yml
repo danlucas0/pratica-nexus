@@ -1,0 +1,13 @@
+services:
+  nexus:
+    image: sonatype/nexus3:3.98.3
+    container_name: nexus
+    ports:
+      - "8081:8081"   # interface web e repositórios npm/maven
+      - "8082:8082"   # registry Docker (repositório docker-hosted)
+    volumes:
+      - nexus-data:/nexus-data
+    restart: unless-stopped
+
+volumes:
+  nexus-data:
